@@ -17,6 +17,7 @@ export default class Box extends React.Component {
         let result;
         if (i === index) {
           result = { ...item, selected: !item.selected };
+        //   If item was select add 1 to the counter if was unselected substract one from the counter
           !item.selected
             ? this.setState({
                 counter: counter + 1
@@ -45,6 +46,9 @@ export default class Box extends React.Component {
               onSelect: this.toggleSelectItem,
               item: item
             };
+            /* Because each item of the horizontal box was inside an span I created a component for horizontal items, 
+            and a component for a vertical items but it is possible to use only one component using css and the div tag for both of them,
+             but because I didn't know if I could change it I created two different components  */
             return boxType === 'box-horizontal' ? (
               <HorizontalItem key={i} props={props} />
             ) : (
